@@ -3,7 +3,7 @@ import Video from "../models/Video.js";
 // import { downloadFromCloudinary, getFileSizeMB } from "../utils/fileUtils.js";
 import { sendVideoEmail } from "../services/email.service.js";
 
-cron.schedule("*/1  * * * *", async () => {
+cron.schedule("0 19 * * *", async () => {
   console.log("⏰ Cron running");
 
   const video = await Video.findOne({ isUsed: false }).sort({ createdAt: -1 });
