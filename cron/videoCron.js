@@ -8,7 +8,7 @@ const getRandomHashtags = (hashtags, count = 5) => {
   return [...hashtags].sort(() => Math.random() - 0.5).slice(0, count);
 };
 
-cron.schedule("0 19 * * *", async () => {
+cron.schedule("0 21 * * *", async () => {
   console.log("⏰ Cron running");
 
   const video = await Video.findOne({ isUsed: false }).sort({ createdAt: -1 });
@@ -43,4 +43,7 @@ cron.schedule("0 19 * * *", async () => {
   } catch (err) {
     console.error("❌ Cron error:", err.message);
   }
-});
+}, {
+  timezone: "Asia/Kolkata",
+}
+);
